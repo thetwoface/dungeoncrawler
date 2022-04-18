@@ -1,5 +1,3 @@
-use std::cmp::min_by;
-
 use super::MapArchitect;
 use crate::prelude::*;
 
