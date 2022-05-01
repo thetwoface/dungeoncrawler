@@ -133,13 +133,14 @@ impl State {
     }
 
     fn advance_level(&mut self) {
+        use std::collections::HashSet;
+
         let player_entity = *<Entity>::query()
             .filter(component::<Player>())
             .iter(&mut self.ecs)
             .nth(0)
             .unwrap();
 
-        use std::collections::HashSet;
         let mut entities_to_keep = HashSet::new();
         entities_to_keep.insert(player_entity);
 

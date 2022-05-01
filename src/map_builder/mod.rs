@@ -9,7 +9,6 @@ mod themes;
 
 use automata::CellularAutomataArchitect;
 use drunkard::DrunkardsWalkArchitect;
-use empty::EmptyArchitect;
 use prefab::apply_prefab;
 use rooms::RoomsArchitect;
 use themes::*;
@@ -58,15 +57,15 @@ impl MapBuilder {
     }
 
     fn find_most_distant(&self) -> Point {
+        const UNREACHABLE: &f32 = &f32::MAX;
+
         let dijkstra_map = DijkstraMap::new(
             SCREEN_WIDTH,
             SCREEN_HEIGHT,
-            &vec![self.map.point2d_to_index(self.player_start)],
+            &[self.map.point2d_to_index(self.player_start)],
             &self.map,
             1024.0,
         );
-
-        const UNREACHABLE: &f32 = &f32::MAX;
 
         self.map.index_to_point2d(
             dijkstra_map
