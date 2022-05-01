@@ -38,7 +38,8 @@ pub fn spawn_level(
     rng: &mut RandomNumberGenerator,
     level: usize,
     spawn_points: &[Point],
+    resources:&mut Resources
 ) {
     let template = Templates::load();
-    template.spawn_entities(ecs, rng, level, spawn_points);
+    template.spawn_entities(ecs, rng, level, spawn_points,resources);
 }

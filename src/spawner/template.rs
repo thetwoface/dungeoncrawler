@@ -41,6 +41,7 @@ impl Templates {
         rng: &mut RandomNumberGenerator,
         level: usize,
         spawn_points: &[Point],
+        resources: &mut Resources,
     ) {
         let mut available_entities = Vec::new();
         self.entities
@@ -58,7 +59,7 @@ impl Templates {
                 self.spawn_entity(pt, entity, &mut commands);
             }
         });
-        commands.flush(ecs);
+        commands.flush(ecs,resources);
     }
 
     fn spawn_entity(
